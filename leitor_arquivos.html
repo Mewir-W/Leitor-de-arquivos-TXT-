@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitor de TXT</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif, sans-serif;
+      margin: 20px;
+      color: rgb(90, 112, 131);
+      background-color: antiquewhite;
+      font-size: larger;
+    }
+    #conteudo {
+      white-space: pre-wrap; /* Preserva quebras de linha */
+      border: 1px solid #000000;
+      padding: 10px;
+      background-color: #ffffff;
+      margin-top: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .txt{
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-top: 10%;
+    margin-left: 40%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Leitor de Arquivo-TXT</h2>
+  <input type="file" id="fileInput"><br><br>
+  <div id="conteudo">Aqui seu arquivo...</div>
+
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+      const file = event.target.files[0]; // Seleciona o primeiro arquivo
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('conteudo').textContent = e.target.result;
+        };
+        reader.readAsText(file); // Lê o arquivo como texto
+      } else {
+        document.getElementById('conteudo').textContent = 'Nenhum arquivo selecionado.';
+      }
+    });
+  </script>
+  <div>
+    <img class="txt" src="/Img/10435080.png" alt="txt-img">
+  </div>
+</body>
+</html>
